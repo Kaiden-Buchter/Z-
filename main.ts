@@ -7,10 +7,14 @@ repl();
 function repl() {
   const parser = new Parser();
   const env = new Environment();
+
+  // Create default global environment
   env.declareVar("x", MK_NUMBER(100));
   env.declareVar("true", MK_BOOL(true));
   env.declareVar("false", MK_BOOL(false));
   env.declareVar("null", MK_NULL());
+
+  // Initial Repl
   console.log("\nRepl v0.1");
 
   // Continue Repl until user stops or types `exit`
