@@ -1,3 +1,9 @@
+// -----------------------------------------------------------
+// ---------------          AST TYPES          ---------------
+// ---     Defines the structure of our Languages AST      ---
+// -----------------------------------------------------------
+
+
 // Define the possible types of nodes in the AST (Abstract Syntax Tree)
 // Each type corresponds to a different kind of operation or value in the program
 export type NodeTypes =
