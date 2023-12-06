@@ -62,8 +62,6 @@ export default class Parser {
     }
   }
 
-  // LET IDENT;
-  // ( LET | CONST ) IDENT = EXPR;
   parse_var_declaration(): Stmt {
     const isConstant = this.eat().type == TokenType.Const;
     const identifier = this.expect(
@@ -92,6 +90,7 @@ export default class Parser {
     const declaration = {
       kind: "VarDeclaration",
       value: this.parse_expr(),
+      identifier,
       constant: isConstant,
     } as VarDeclaration;
 
@@ -99,6 +98,7 @@ export default class Parser {
       TokenType.Semicolon,
       "Variable declaration statment must end with semicolon."
     );
+
     return declaration;
   }
 
