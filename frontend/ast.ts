@@ -6,7 +6,10 @@
 // Define the possible types of nodes in the AST (Abstract Syntax Tree)
 // Each type corresponds to a different kind of operation or value in the program
 export type NodeTypes =
+  // Statements
   | "Program" // Represents the entire program
+  | "VarDeclaration" // Represents a variable declaration (e.g., let x = 45)
+  // Expressions
   | "NumericLiteral" // Represents a numeric literal (e.g., 1, 2, 3)
   | "Identifier" // Represents an identifier (e.g., variable name)
   | "BinaryExpr"; // Represents a binary expression (e.g., a + b)
@@ -21,6 +24,14 @@ export interface Stmt {
 export interface Program extends Stmt {
   kind: "Program"; // The type of the node
   body: Stmt[]; // The list of statements in the program
+}
+
+// A VarDeclaration node represents a variable declaration. It contains a body which is a list of statements
+export interface VarDeclaration extends Stmt {
+  kind: "VarDeclaration"; // The type of the node
+  constant: boolean; // Whether the variable is a constant
+  identifier: string; // The identifier (e.g., variable name)
+  value?: Expr; // The value of the variable (e.g., 45)
 }
 
 // Expressions are operations that produce a value
