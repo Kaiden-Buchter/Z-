@@ -1,4 +1,8 @@
-// deno-lint-ignore-file no-explicit-any
+// -----------------------------------------------------------
+// ---------------          PARSER          ------------------
+// ---    Converts and analizes a program into the AST     ---
+// -----------------------------------------------------------
+
 import {
   Stmt,
   Program,

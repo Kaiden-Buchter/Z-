@@ -49,10 +49,13 @@ export function eval_identifier(
   return val;
 }
 
-export function eval_assignment (node: AssignmentExpr, env: Environment): RuntimeVal {
+export function eval_assignment(
+  node: AssignmentExpr,
+  env: Environment
+): RuntimeVal {
   if (node.assigne.kind != "Identifier")
-    throw (`Invalid LHS inside assignment expr: ${JSON.stringify(node.assigne)}`);
+    throw `Invalid LHS inside assignment expr: ${JSON.stringify(node.assigne)}`;
 
-    const varname = (node.assigne as Identifier).symbol;
-  return env.assignVar(varname, evaluate(node.value, env))
+  const varname = (node.assigne as Identifier).symbol;
+  return env.assignVar(varname, evaluate(node.value, env));
 }
