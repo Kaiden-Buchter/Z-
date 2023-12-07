@@ -10,6 +10,7 @@ export type NodeTypes =
   | "Program" // Represents the entire program
   | "VarDeclaration" // Represents a variable declaration (e.g., let x = 45)
   // Expressions
+  | "AssignmentExpr" // Represents an assignment expression (e.g., x = 45)
   | "NumericLiteral" // Represents a numeric literal (e.g., 1, 2, 3)
   | "Identifier" // Represents an identifier (e.g., variable name)
   | "BinaryExpr"; // Represents a binary expression (e.g., a + b)
@@ -36,7 +37,14 @@ export interface VarDeclaration extends Stmt {
 
 // Expressions are operations that produce a value
 // For example, an arithmetic operation (x + 45) is an expression
+// deno-lint-ignore no-empty-interface
 export interface Expr extends Stmt {}
+
+export interface AssignmentExpr extends Expr {
+  kind: "AssignmentExpr"; // The type of the node
+  assigne: Expr; // The left-hand side of the expression
+  value: Expr; // The right-hand side of the expression
+}
 
 // A BinaryExpr node represents a binary expression. It contains a left and right expression and an operator
 export interface BinaryExpr extends Expr {

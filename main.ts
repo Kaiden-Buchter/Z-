@@ -1,7 +1,7 @@
 import Parser from "./frontend/parser.ts";
 import Environment from "./runtime/environment.ts";
 import { evaluate } from "./runtime/interpreter.ts";
-import { MK_BOOL, MK_NULL, MK_NUMBER } from "./runtime/values.ts";
+import { MK_BOOL, MK_NULL} from "./runtime/values.ts";
 repl();
 
 function repl() {
@@ -18,10 +18,10 @@ function repl() {
 
   // Continue Repl until user stops or types `exit`
   while (true) {
-    const input = prompt("> ");
+    const input = prompt(">> ");
     // Check for no user input or exit keyword
     if (!input || input.includes("exit")) {
-      console.log("Exiting repl...");
+      console.log("Exiting Repl...");
       Deno.exit(0);
     }
 

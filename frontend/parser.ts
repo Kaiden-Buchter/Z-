@@ -7,6 +7,7 @@ import {
   NumericLiteral,
   Identifier,
   VarDeclaration,
+  AssignmentExpr,
 } from "./ast.ts";
 import { tokenize, Token, TokenType } from "./lexer.ts";
 
@@ -51,6 +52,7 @@ export default class Parser {
     return program;
   }
 
+  // Handle complex statement types
   private parse_stmt(): Stmt {
     // skip to parse_expr
     switch (this.at().type) {
@@ -102,8 +104,25 @@ export default class Parser {
     return declaration;
   }
 
+  // Handle expressions
   private parse_expr(): Expr {
-    return this.parse_additive_expr();
+    return this.parse_assignment_expr();
+  }
+
+  parse_assignment_expr(): Expr {
+    const left = this.parse_additive_expr(); // switch this out with objectExpr
+
+    if (this.at().type == TokenType.Equals) {
+      this.eat(); // advance past equals
+      const value = this.parse_assignment_expr();
+      return {
+        value,
+        assigne: left,
+        kind: "AssignmentExpr",
+      } as AssignmentExpr;
+    }
+
+    return left;
   }
 
   private parse_additive_expr(): Expr {
