@@ -14,7 +14,9 @@ function repl() {
   env.declareVar("null", MK_NULL(), true);
 
   // Initial Repl
-  console.log("\nRepl v0.1");
+  console.log("Welcome to the Z- Programming Language!\n");
+  console.log("Repl v0.1");
+  console.log("Type `help` for help\n");
 
   // Continue Repl until user stops or types `exit`
   while (true) {
@@ -25,6 +27,20 @@ function repl() {
       Deno.exit(0);
     }
 
+    if (!input || input.includes("help")) {
+      console.log("\n   Help Menu   \n");
+      console.log("exit - Exit Repl");
+      console.log("help - Help Menu");
+      console.log("clear - Clear Repl");
+      
+      continue;
+    }
+
+    if (!input || input.includes("clear")) {
+      console.clear();
+      continue;
+    }
+
     // Produce AST from source code
     const program = parser.produceAST(input);
 
@@ -32,3 +48,5 @@ function repl() {
     console.log(result);
   }
 }
+
+
