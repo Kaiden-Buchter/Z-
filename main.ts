@@ -32,7 +32,7 @@ function repl() {
       console.log("exit - Exit Repl");
       console.log("help - Help Menu");
       console.log("about - About Z- Programming Language");
-      console.log("clear - Clear Repl");
+      console.log("clear - Clear Repl Console");
       console.log("env - Print Environment");
       console.log("write - Write to file");
       console.log("anything else - Evaluate Expression");
