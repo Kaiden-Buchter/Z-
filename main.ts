@@ -27,6 +27,7 @@ function repl() {
       Deno.exit(0);
     }
 
+    // Brings up the help menu
     if (!input || input.includes("help")) {
       console.log("\n   Help Menu   \n");
       console.log("exit - Exit Repl");
