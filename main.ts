@@ -38,8 +38,17 @@ function repl() {
       console.log("\n  File System   \n");
       console.log("write - Write to file");
       console.log("delete - Delete file");
+      console.log("make - Make file")
       console.log("rename - Rename file");
-      console.log("\n");
+      console.log("clone - Clone file");
+      console.log("show - Show file");
+      console.log("ls - List files");
+      console.log("\n  Directory System   \n");
+      console.log("cd - Change directory");
+      console.log("pwd - Print working directory");
+      console.log("mkdir - Make directory");
+      console.log("rmdir - Remove directory");
+      console.log("\n Info \n");
       console.log(
         "Note: The repl is not perfect and may crash if you type something wrong."
       );
@@ -89,11 +98,74 @@ function repl() {
       continue;
     }
 
+    if (!input || input.includes("make")) {
+      console.log("\n   Make   \n");
+      const fileName = prompt("File Name: ");
+      Deno.createSync(fileName!);
+      continue;
+    }
+
     if (!input || input.includes("rename")) {
       console.log("\n   Rename   \n");
       const fileName = prompt("File Name: ");
       const newFileName = prompt("New File Name: ");
       Deno.renameSync(fileName!, newFileName!);
+      continue;
+    }
+
+    if (!input || input.includes("clone")) {
+      console.log("\n   Clone   \n");
+      const fileName = prompt("File Name: ");
+      const newFileName = prompt("New File Name: ");
+      Deno.copyFileSync(fileName!, newFileName!);
+      continue;
+    }
+
+    if (!input || input.includes("show")) {
+      console.log("\n   Show   \n");
+      const fileName = prompt("File Name: ");
+      const file = Deno.openSync(fileName!, { read: true });
+      const decoder = new TextDecoder("utf-8");
+      const data = Deno.readAllSync(file);
+      const text = decoder.decode(data);
+      console.log(text);
+      Deno.close(file.rid);
+      continue;
+    }
+
+    if (!input || input.includes("ls")) {
+      console.log("\n   List   \n");
+      const files = Deno.readDirSync(".");
+      for (const file of files) {
+        console.log(file.name);
+      }
+      continue;
+    }
+
+    if (!input || input.includes("cd")) {
+      console.log("\n   Change Directory   \n");
+      const dir = prompt("Directory: ");
+      Deno.chdir(dir!);
+      continue;
+    }
+
+    if (!input || input.includes("pwd")) {
+      console.log("\n   Print Working Directory   \n");
+      console.log(Deno.cwd());
+      continue;
+    }
+
+    if (!input || input.includes("mkdir")) {
+      console.log("\n   Make Directory   \n");
+      const dir = prompt("Directory: ");
+      Deno.mkdirSync(dir!);
+      continue;
+    }
+
+    if (!input || input.includes("rmdir")) {
+      console.log("\n   Remove Directory   \n");
+      const dir = prompt("Directory: ");
+      Deno.removeSync(dir!, { recursive: true });
       continue;
     }
 
