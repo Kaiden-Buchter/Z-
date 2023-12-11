@@ -16,7 +16,7 @@ function repl() {
   // Initial Repl
   console.log("Welcome to the Z- Programming Language!\n");
   console.log("Repl v0.1");
-  console.log("Type `help` for help\n");
+  console.log("Type `help` to bring up the Help Menu!\n");
 
   // Continue Repl until user stops or types `exit`
   while (true) {
