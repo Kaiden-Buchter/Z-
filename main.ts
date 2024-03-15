@@ -35,7 +35,7 @@ function repl() {
       console.log("about - About Z- Programming Language");
       console.log("clear - Clear Repl Console");
       console.log("env - Print Environment");
-      console.log("anything else - Evaluate Expression");
+      console.log("# +- | */ # - Evaluate Expression");
       console.log("\n  File System   \n");
       console.log("write - Write to file");
       console.log("delete - Delete file");
@@ -50,6 +50,7 @@ function repl() {
       console.log("mkdir - Make directory");
       console.log("rmdir - Remove directory");
       console.log("\n Info \n");
+      console.log("restart - Restart Repl");
       console.log(
         "Note: The repl is not perfect and may crash if you type something wrong."
       );
