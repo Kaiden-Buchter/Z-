@@ -39,7 +39,7 @@ function repl() {
       console.log("\n  File System   \n");
       console.log("write - Write to file");
       console.log("delete - Delete file");
-      console.log("make - Make file")
+      console.log("make - Make file");
       console.log("rename - Rename file");
       console.log("clone - Clone file");
       console.log("show - Show file");
