@@ -50,7 +50,6 @@ function repl() {
       console.log("mkdir - Make directory");
       console.log("rmdir - Remove directory");
       console.log("\n Info \n");
-      console.log("restart - Restart Repl");
       console.log(
         "Note: The repl is not perfect and may crash if you type something wrong."
       );
